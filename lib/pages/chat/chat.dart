@@ -12,36 +12,36 @@ class chat extends StatefulWidget {
 class _chatState extends State<chat> {
   final pertanyaan = TextEditingController();
 
+  String? time;
+
   @override
   void initState() {
     super.initState();
+
+    time = DateTime.now().millisecondsSinceEpoch.toString();
+
     context
         .read<AiCubit>()
-        .getAi('1354|r5uOe7c4yC14CDvrkeTfP73s0AIrkG01EKos4lC4');
-    String time = DateTime
-        .now()
-        .millisecondsSinceEpoch
-        .toString()
-        .substring(0, 10);
+        .getAi('1354|r5uOe7c4yC14CDvrkeTfP73s0AIrkG01EKos4lC4', time!);
   }
 
   Future<void> cari() async {
     try {
-      Uri url_ = Uri.parse(
-          'https://dashboard.parentoday.com/api/chat/ai');
+      Uri url_ = Uri.parse('https://dashboard.parentoday.com/api/chat/ai');
       var res = await http.post(
         url_,
         body: {
-          'prompt': pertanyaan,
-          'random_id':,
+          'prompt': pertanyaan.text,
+          'random_id': time,
         },
         headers: {
           "Accept": "application/json",
           "Authorization":
-          "Bearer 1354|r5uOe7c4yC14CDvrkeTfP73s0AIrkG01EKos4lC4",
+              "Bearer 1354|r5uOe7c4yC14CDvrkeTfP73s0AIrkG01EKos4lC4",
         },
       );
       Map<String, dynamic> body = jsonDecode(res.body);
+      print(res.body.toString());
       if (res.statusCode == 200) {
         bool data = body["data"];
       } else {
@@ -116,14 +116,13 @@ class _chatState extends State<chat> {
                 return Column(
                   children: snapshot.ai!
                       .mapIndexed(
-                        (int index, e) =>
-                        Column(
+                        (int index, e) => Column(
                           children: [
                             chatUser(),
                             chatRobot(e, ''),
                           ],
                         ),
-                  )
+                      )
                       .toList(),
                 );
               } else {
@@ -155,10 +154,7 @@ class _chatState extends State<chat> {
               children: [
                 Container(
                   height: 35,
-                  width: MediaQuery
-                      .of(context)
-                      .size
-                      .width - 78,
+                  width: MediaQuery.of(context).size.width - 78,
                   child: TextField(
                     cursorColor: 'FF6969'.toColor(),
                     controller: pertanyaan,
@@ -166,10 +162,10 @@ class _chatState extends State<chat> {
                       focusedBorder: OutlineInputBorder(
                         borderRadius: BorderRadius.all(Radius.circular(5)),
                         borderSide:
-                        BorderSide(width: 1, color: 'FF6969'.toColor()),
+                            BorderSide(width: 1, color: 'FF6969'.toColor()),
                       ),
                       contentPadding:
-                      EdgeInsets.only(left: 10, top: 5, bottom: 5),
+                          EdgeInsets.only(left: 10, top: 5, bottom: 5),
                       hintStyle: GoogleFonts.poppins().copyWith(
                         fontSize: 12,
                         fontWeight: FontWeight.w300,
@@ -184,7 +180,13 @@ class _chatState extends State<chat> {
                 ),
                 SizedBox(width: 10),
                 GestureDetector(
-                  onTap: () {},
+                  onTap: () async {
+                    cari();
+
+                    await context
+                        .read<AiCubit>()
+                        .getAi('1354|r5uOe7c4yC14CDvrkeTfP73s0AIrkG01EKos4lC4', time!);
+                  },
                   child: Container(
                     padding: EdgeInsets.all(8),
                     decoration: BoxDecoration(
