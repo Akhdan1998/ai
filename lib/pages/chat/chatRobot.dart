@@ -29,6 +29,7 @@ class _chatRobotState extends State<chatRobot> {
               style: GoogleFonts.poppins().copyWith(
                 fontWeight: FontWeight.w300,
                 color: '484848'.toColor(),
+                height: 1.7,
                 fontSize: 12,
               ),
             ),

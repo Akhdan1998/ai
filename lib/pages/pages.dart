@@ -1,6 +1,7 @@
 import 'dart:convert';
 
 import 'package:ai/app/model/google_signIn.dart';
+import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 import 'package:supercharged/supercharged.dart';
 import 'package:google_fonts/google_fonts.dart';
@@ -17,7 +18,7 @@ import 'package:collection/collection.dart';
 import '../cubit/chat_ai_cubit.dart';
 import '../cubit/chat_ai_state.dart';
 import 'package:http/http.dart' as http;
-// import 'package:firebase_messaging/firebase_messaging.dart';
+import 'package:loader_overlay/loader_overlay.dart';
 part 'chat/chatUser.dart';
 
 part 'chat/chatRobot.dart';

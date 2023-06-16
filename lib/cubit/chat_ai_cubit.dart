@@ -9,8 +9,7 @@ class AiCubit extends Cubit<AiState> {
   AiCubit() : super(AiInitial());
 
   Future<void> getAi(String token, String random_id) async {
-    ApiReturnAi<List<Ai>>? result =
-    await AiServices.getAi(token, random_id);
+    ApiReturnAi<List<Ai>>? result = await AiServices.getAi(token, random_id);
     if (result?.value != null) {
       emit(AiLoaded(ai: result?.value));
     } else {

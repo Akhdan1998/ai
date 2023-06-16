@@ -8,22 +8,7 @@ import 'package:get/get.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:provider/provider.dart';
 
-void main() async {
-  // WidgetsFlutterBinding.ensureInitialized();
-  // await Firebase.initializeApp();
-  // if (kIsWeb) {
-  //   await Firebase.initializeApp(
-  //     options: FirebaseOptions(
-  //       apiKey: "AIzaSyBvRWYAPzRxqROl6GXd2jCvmv9JFpNUdAo",
-  //       appId: "1:154737430443:web:d4f74597d0186ddf70ccee",
-  //       messagingSenderId: "154737430443",
-  //       projectId: "mobileai-54bb9",
-  //       storageBucket: "mobileai-54bb9.appspot.com",
-  //     ),
-  //   );
-  // } else {
-  //   await Firebase.initializeApp();
-  // }
+void main() {
   runApp(MyApp());
 }
 

@@ -6,23 +6,6 @@ class loginGoogle extends StatefulWidget {
 }
 
 class _loginGoogleState extends State<loginGoogle> {
-  // Future signIn() async {
-  //   final user = await GoogleSignInApi.login();
-  //   if (user == null) {
-  //     ScaffoldMessenger.of(context).showSnackBar(
-  //       SnackBar(
-  //         content: Text('Sign In Failed'),
-  //       ),
-  //     );
-  //   } else {
-  //     Navigator.of(context).pushReplacement(
-  //       MaterialPageRoute(
-  //         builder: (context) => chat(user: user),
-  //       ),
-  //     );
-  //   }
-  // }
-
   @override
   Widget build(BuildContext context) {
     return Scaffold(

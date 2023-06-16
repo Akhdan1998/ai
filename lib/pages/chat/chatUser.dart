@@ -1,6 +1,10 @@
 part of '../pages.dart';
 
 class chatUser extends StatefulWidget {
+  late final Ai? ai;
+  String? token;
+  chatUser(this.ai, this.token);
+
   @override
   State<chatUser> createState() => _chatUserState();
 }
@@ -22,7 +26,7 @@ class _chatUserState extends State<chatUser> {
             Container(
               width: MediaQuery.of(context).size.width - 90,
               child: Text(
-                'Lorem ipsum dolor sit amet consectetur. Penatibus sagittis fermentum risus neque. Cras vestibulum blandit sit scelerisque.',
+                '${widget.ai!.content ?? ''}',
                 style: GoogleFonts.poppins().copyWith(
                   fontWeight: FontWeight.w300,
                   color: '484848'.toColor(),

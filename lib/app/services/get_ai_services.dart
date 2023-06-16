@@ -6,7 +6,7 @@ import '../model/api_return_aiChat.dart';
 import '../model/model_ai.dart';
 
 class AiServices {
-  static Future<ApiReturnAi<List<Ai>>?> getAi(String token, String random_id,
+  static Future<ApiReturnAi<List<Ai>>?> getAi(String token, random_id,
       {http.Client? client}) async {
     String baseUrl =
         'https://dashboard.parentoday.com/api/chat/ai?random_id=${random_id}';
@@ -16,7 +16,7 @@ class AiServices {
     String url = baseUrl;
     var response = await client.get(Uri.parse(url), headers: {
       'Content-Type': 'application/json',
-      'Authorization': '${token}'
+      'Authorization': 'Bearer ${token}'
     });
     print('hahah' + response.body.toString());
 
@@ -24,8 +24,6 @@ class AiServices {
       return ApiReturnAi(message: 'Please try Again');
     }
     var data = jsonDecode(response.body);
-
-
 //jika backand berbentuk list
     List<Ai> value =
     (data['data'] as Iterable).map((e) => Ai.fromJson(e)).toList();

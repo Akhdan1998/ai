@@ -1,9 +1,11 @@
-class Ai {
+import 'package:equatable/equatable.dart';
+
+class Ai extends Equatable {
   int? id;
   String? user_id;
   String? random_id;
   int? index;
-  String? roel;
+  String? role;
   String? content;
   dynamic created_at;
   dynamic updated_at;
@@ -14,7 +16,7 @@ class Ai {
     this.user_id,
     this.random_id,
     this.index,
-    this.roel,
+    this.role,
     this.content,
     this.created_at,
     this.updated_at,
@@ -23,13 +25,17 @@ class Ai {
 
   Ai.fromJson(Map<String, dynamic> json) {
     id = json['id'];
-    user_id = json['id'];
-    random_id = json['id'];
-    index = json['id'];
-    roel = json['id'];
-    content = json['id'];
-    created_at = json['id'];
-    updated_at = json['id'];
-    deleted_at = json['id'];
+    user_id = json['user_id'];
+    random_id = json['random_id'];
+    index = json['index'];
+    role = json['role'];
+    content = json['content'];
+    created_at = json['created_at'];
+    updated_at = json['updated_at'];
+    deleted_at = json['deleted_at'];
   }
+
+  @override
+  // TODO: implement props
+  List<Object?> get props => [user_id, random_id, content, role];
 }
