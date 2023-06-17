@@ -158,7 +158,7 @@ class _chatState extends State<chat> {
               ),
             ],
           ),
-          height: 126,
+          height: 116,
           padding: EdgeInsets.only(top: 11, bottom: 20, right: 16, left: 16),
           child: Column(
             children: [
@@ -209,14 +209,13 @@ class _chatState extends State<chat> {
                         isLoading = true;
                         show = true;
                         context.loaderOverlay.show();
-                        pertanyaan.text = '';
                       });
                       await cari().whenComplete(() {
                         setState(() {
                           isLoading = false;
                           show = false;
                           context.loaderOverlay.hide();
-                          // context.loaderOverlay.show();
+                          pertanyaan.text = '';
                         });
                       });
                     },
