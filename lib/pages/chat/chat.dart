@@ -24,7 +24,7 @@ class _chatState extends State<chat> {
 
     context
         .read<AiCubit>()
-        .getAi('1354|r5uOe7c4yC14CDvrkeTfP73s0AIrkG01EKos4lC4', '124141');
+        .getAi('1354|r5uOe7c4yC14CDvrkeTfP73s0AIrkG01EKos4lC4', time!);
   }
 
   Future<List<Ai>> cari() async {
@@ -33,7 +33,7 @@ class _chatState extends State<chat> {
       url_,
       body: {
         'prompt': pertanyaan.text,
-        'random_id': '124141',
+        'random_id': time,
       },
       headers: {
         "Accept": "application/json",
@@ -49,7 +49,7 @@ class _chatState extends State<chat> {
 
       await context
           .read<AiCubit>()
-          .getAi('1354|r5uOe7c4yC14CDvrkeTfP73s0AIrkG01EKos4lC4', '124141');
+          .getAi('1354|r5uOe7c4yC14CDvrkeTfP73s0AIrkG01EKos4lC4', time!);
 
       return value;
     } else {
